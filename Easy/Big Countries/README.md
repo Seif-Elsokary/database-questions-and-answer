@@ -145,50 +145,6 @@ ORDER BY w.population;
 
 ---
 
-# Alternative Solutions
-
-## Solution 2
-
-```sql
-SELECT
-    name,
-    population,
-    area
-FROM World
-WHERE population >= 25000000
-   OR area >= 3000000
-ORDER BY population;
-```
-
-### Explanation
-
-This solution removes the table alias because only one table is used.
-
-Both queries return the same result.
-
----
-
-## Solution 3
-
-```sql
-SELECT
-    name,
-    population,
-    area
-FROM World
-WHERE area >= 3000000
-   OR population >= 25000000
-ORDER BY population;
-```
-
-### Explanation
-
-The order of conditions inside `OR` does not change the result.
-
-The database checks whether at least one condition is true.
-
----
-
 # Solution Breakdown
 
 ## Step 1: SELECT
@@ -212,7 +168,7 @@ FROM World w
 
 Specifies the table that contains the data.
 
-`w` is a table alias used to make the query shorter.
+`w` is a table alias used to make the query shorter and easier to read.
 
 ---
 
@@ -228,7 +184,7 @@ Filters countries that satisfy at least one condition:
 * Population is at least 25 million.
 * Area is at least 3 million.
 
-The `OR` operator means one condition is enough.
+The `OR` operator means one condition is enough for the row to be returned.
 
 ---
 
@@ -238,9 +194,9 @@ The `OR` operator means one condition is enough.
 ORDER BY w.population;
 ```
 
-Sorts the final result by population.
+Sorts the final result by the population column.
 
-Since no direction is specified, the default is ascending order.
+Since no direction is specified, the default sorting order is ascending (`ASC`).
 
 ---
 
@@ -248,7 +204,7 @@ Since no direction is specified, the default is ascending order.
 
 **Time Complexity:** `O(n log n)`
 
-* The database scans the table to apply the filter.
+* The database scans the table to filter matching rows.
 * Sorting the result requires additional time.
 
 ---
