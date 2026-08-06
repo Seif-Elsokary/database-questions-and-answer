@@ -1,4 +1,17 @@
 ## 🚀 Learning Journey
 
-This repository represents my continuous practice and improvement in SQL and database problem solving.  
-My goal is to build strong database fundamentals and improve my ability to write efficient queries for real-world backend applications and technical interviews.
+  I have completed all **Easy-level SQL problems on LeetCode**.
+  
+  These solutions cover the fundamental SQL concepts and database techniques needed for Backend Development, including:
+  
+  - SELECT queries
+  - Filtering and sorting data
+  - JOIN operations
+  - GROUP BY and aggregate functions
+  - DISTINCT and duplicate handling
+  - Conditional logic
+  - String functions
+  - NULL handling
+  - Data transformation
+  
+  I will continue solving **Medium and Hard SQL problems on LeetCode** and adding detailed explanations for each solution.
