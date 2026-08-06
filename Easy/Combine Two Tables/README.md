@@ -1,5 +1,6 @@
-
 # 175. Combine Two Tables
+
+**Problem Link:** https://leetcode.com/problems/combine-two-tables/
 
 ## Problem Overview
 
@@ -117,6 +118,33 @@ ON p.personId = a.personId;
 
 ---
 
+# Alternative Solutions
+
+## Solution 2 - Correlated Subqueries
+
+```sql
+SELECT
+    p.firstName,
+    p.lastName,
+    (
+        SELECT city
+        FROM Address a
+        WHERE a.personId = p.personId
+    ) AS city,
+    (
+        SELECT state
+        FROM Address a
+        WHERE a.personId = p.personId
+    ) AS state
+FROM Person p;
+```
+
+This solution uses correlated subqueries instead of a `JOIN`. For each person, the database searches the `Address` table to retrieve the matching `city` and `state`.
+
+Although it produces the same result, the `LEFT JOIN` solution is generally preferred because it is simpler and more efficient.
+
+---
+
 # Solution Breakdown
 
 ### Step 1: SELECT
@@ -178,7 +206,7 @@ If no matching address exists, MySQL automatically returns **NULL** for `city` a
 
 **Time Complexity:** `O(n)`
 
-The database scans the `Person` table and joins it with the `Address` table using the `personId` column. With proper indexing on the join key, the operation is efficient.
+The database scans the `Person` table and joins it with the `Address` table using the `personId` column.
 
 ---
 
